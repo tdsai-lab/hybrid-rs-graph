@@ -3,35 +3,6 @@
 This repository contains the code for the paper
 [**Joint Certification for Attributed Graphs: Beyond Topology-Only Robustness**](https://openreview.net/forum?id=1qibUxCQxG).
 
-Run commands from this directory with Python 3.10+.
-
-## Codebase and attribution
-
-We use the original [CertifyGNN code](https://github.com/binghuiwang/CertifyGNN)
-and extend its topology-only randomized smoothing to hybrid randomized
-smoothing for joint edge flips and continuous node-feature perturbations.
-Our modified implementation lives in `hybrid_graph/`, adapting CertifyGNN's
-GCN layers, dataset utilities and graph-certification pipeline. Reused CertifyGNN code retains its
-[MIT license and copyright notice](LICENSES/CertifyGNN-MIT.txt).
-
-For hybrid randomized smoothing, we use and adapt the
-[hybrid-randomized-smoothing codebase](https://github.com/tdsai-lab/hybrid-randomized-smoothing).
-Its hybrid discrete–continuous certification routines are specialized here
-to graph topology and node features in `hybrid_smoothing/`. This repository
-integrates these two codebases and adds the graph-specific Hybrid NP and
-Sequential NP certificates, BWGNN support, and experiment drivers.
-
-The graph storage helpers in `graph_utils/` are
-adapted from [sparse_smoothing](https://github.com/abojchevski/sparse_smoothing).
-Fraud dataset preparation uses the data released with
-[CARE-GNN](https://github.com/YingtongDou/CARE-GNN).
-
-Baseline comparisons execute the authors' implementations of
-[AGNNCert](https://github.com/JetRichardLee/AGNNCert),
-[CertifyGNN](https://github.com/binghuiwang/CertifyGNN),
-[sparse_smoothing](https://github.com/abojchevski/sparse_smoothing).
-Their exact revisions are pinned in
-`external/repos.json` and downloaded by `scripts/fetch_external.py`.
 
 ## Installation and data
 
@@ -51,7 +22,7 @@ MGTAB from the [dataset authors](https://github.com/GraphDetec/MGTAB) and place
 
 This package runs Figure 2 and the certificate comparisons in Appendix I.2,
 Tables 6–9. For Table 9, it computes the certificate-coverage columns.
-Attack experiments and the other appendix diagnostics are outside its scope.
+
 
 | Code | Paper experiment |
 | --- | --- |
@@ -90,8 +61,7 @@ CUDA_VISIBLE_DEVICES=0 python experiments/reproduce_figure2.py \
 Choose `--dataset amazon_fraud`, `yelpchi`, `pubmed`, or `mgtab` for one dataset.
 `--stage train` and `--stage certify` run separately; a single dataset can use
 `--stage certify --checkpoint PATH`. Defaults are seed 42, 200 epochs,
-N=10,000 independent estimation draws and alpha=0.001 per target. Confidence
-intervals use these N observations. N0 is the independent class-selection pilot.
+N=10,000 independent estimation draws and alpha=0.001 per target.
 
 | Dataset | Model | q | sigma | sigma train | Targets | N0 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -100,10 +70,9 @@ intervals use these N observations. N0 is the independent class-selection pilot.
 | PubMed | GCN, hidden 16 | 0.7 | 0.01 | 0.04 | 1000 | 10 |
 | MGTAB | GCN, hidden 16 | 0.4 | 0.4 | 0.4 | 400 | 100 |
 
-Figure 2 uses global Gaussian feature noise (C=V), with one total Frobenius
+Figure 2 uses global Gaussian feature noise, with one total Frobenius
 budget epsilon. Topology smoothing overwrites target-incident edge slots with
-keep probability q; effective retention is (1+q)/2. Certified accuracy uses
-all evaluated targets as its denominator.
+keep probability q; effective retention is (1+q)/2.
 
 ## Baseline comparisons
 
@@ -124,5 +93,31 @@ method-specific settings. `external/repos.json` pins the external code.
 `--data-root`, `--seed`, `--epochs`, `--nodes`, `--mc-samples` and `--batch`
 control run sizes. Smaller counts change the experiment. Commands generate
 checkpoints, sampling statistics, curves and metrics under `results/`;
-use a fresh output directory for each run. Datasets, checkpoints, saved
-results and figure caches are not bundled.
+use a fresh output directory for each run.
+
+
+## Codebase and attribution
+
+We use the original [CertifyGNN code](https://github.com/binghuiwang/CertifyGNN)
+and extend its topology-only randomized smoothing to hybrid randomized
+smoothing for joint edge flips and continuous node-feature perturbations.
+Our modified implementation lives in `hybrid_graph/`, adapting CertifyGNN's
+GCN layers, dataset utilities and graph-certification pipeline. Reused CertifyGNN code retains its
+[MIT license and copyright notice](LICENSES/CertifyGNN-MIT.txt).
+
+For hybrid randomized smoothing, we use and adapt the
+[hybrid-randomized-smoothing codebase](https://github.com/tdsai-lab/hybrid-randomized-smoothing).
+Its hybrid discrete–continuous certification routines are specialized here
+to graph topology and node features in `hybrid_smoothing/`. This repository
+integrates these two codebases and adds the graph-specific Hybrid NP and
+Sequential NP certificates.
+
+The graph storage helpers in `graph_utils/` are
+adapted from [sparse_smoothing](https://github.com/abojchevski/sparse_smoothing).
+Fraud dataset preparation uses the data released with
+[CARE-GNN](https://github.com/YingtongDou/CARE-GNN).
+
+Baseline comparisons execute the authors' implementations of
+[AGNNCert](https://github.com/JetRichardLee/AGNNCert),
+[CertifyGNN](https://github.com/binghuiwang/CertifyGNN),
+[sparse_smoothing](https://github.com/abojchevski/sparse_smoothing).

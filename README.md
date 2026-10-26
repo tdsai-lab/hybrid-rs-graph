@@ -4,6 +4,13 @@ This repository contains the code for the paper
 [**Joint Certification for Attributed Graphs: Beyond Topology-Only Robustness**](https://openreview.net/forum?id=1qibUxCQxG).
 
 
+![Figure 1: Joint attacks on graph topology and continuous node features.](assets/figure1.png)
+
+**TL;DR:** We certify GNN predictions against edge flips incident to the target
+node and continuous feature perturbations using hybrid randomized smoothing.
+Our coupled Hybrid NP certificate improves on Sequential NP, while joint
+attacks expose the limits of topology-only guarantees.
+
 ## How to cite
 
 Blaise Delattre, Hengyu Wu, Wei Yang Bryan Lim, and Yang Cao.

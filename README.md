@@ -1,7 +1,9 @@
 # Joint Certification for Attributed Graphs
 
-Experiment code for **Joint Certification for Attributed Graphs: Beyond
-Topology-Only Robustness**. Run commands from this directory with Python 3.10+.
+This repository contains the code for the paper
+[**Joint Certification for Attributed Graphs: Beyond Topology-Only Robustness**](https://openreview.net/forum?id=1qibUxCQxG).
+
+Run commands from this directory with Python 3.10+.
 
 ## Codebase and attribution
 

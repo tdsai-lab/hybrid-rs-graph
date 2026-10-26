@@ -4,6 +4,21 @@ This repository contains the code for the paper
 [**Joint Certification for Attributed Graphs: Beyond Topology-Only Robustness**](https://openreview.net/forum?id=1qibUxCQxG).
 
 
+## How to cite
+
+Blaise Delattre, Hengyu Wu, Wei Yang Bryan Lim, and Yang Cao.
+**Joint Certification for Attributed Graphs: Beyond Topology-Only Robustness.**
+*Advances in Neural Information Processing Systems (NeurIPS)*, 2026.
+
+```bibtex
+@inproceedings{delattre2026joint,
+  title = {Joint Certification for Attributed Graphs: Beyond Topology-Only Robustness},
+  author = {Blaise Delattre and Hengyu Wu and Wei Yang Bryan Lim and Yang Cao},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year = {2026}
+}
+```
+
 ## Installation and data
 
 Install PyTorch with CUDA support for GPU runs, then:

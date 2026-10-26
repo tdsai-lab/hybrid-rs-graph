@@ -1,0 +1,14 @@
+{
+  "CertifyGNN": {
+    "url": "https://github.com/binghuiwang/CertifyGNN.git",
+    "revision": "d67cd7b1b4edf60602bebe4d51b638df40ea1bd4"
+  },
+  "AGNNCert": {
+    "url": "https://github.com/JetRichardLee/AGNNCert.git",
+    "revision": "a58e9135a9adbcf936a61ac26e60141441e55d17"
+  },
+  "sparse_smoothing": {
+    "url": "https://github.com/abojchevski/sparse_smoothing.git",
+    "revision": "9add756987972991b50b4f1d87a00cd4e5e2f621"
+  }
+}

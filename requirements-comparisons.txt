@@ -1,0 +1,3 @@
+-r requirements.txt
+gmpy2>=2.1,<3
+statsmodels>=0.14,<1

@@ -55,8 +55,6 @@ Tables 6–9. For Table 9, it computes the certificate-coverage columns.
 | `hybrid_graph/`, `hybrid_smoothing/`, `experiments/offline_certificates.py` | Models, training, topology/feature sampling, Hybrid NP and Sequential NP bounds |
 | `experiments/prepare_fraud.py`, `mgtab_data.py`, `graph_utils/` | Data preparation and graph storage |
 
-Paths under `comparison/` refer to `experiments/comparison/`.
-
 ## Code layout
 
 `hybrid_graph/certification/core_hybrid.py` contains the `SmoothHybrid` entry point:
